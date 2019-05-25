@@ -1,0 +1,20 @@
+<html> 
+<head>
+<title>Lab 2.2 - Program 3 - Fibonacci Numbers (with User Input and Counter)
+</title>
+<script language="JavaScript"> function validateInput() {
+var n = parseInt(document.FibonacciForm.max_n.value); if(n!=NaN&&n>=1&&n<=47)
+return true; else {
+alert("The number must be between 1 and 47 (inclusive)."); setFocus();
+return false;
+} }
+function setFocus() { document.FibonacciForm.max_n.select(); document.FibonacciForm.max_n.focus();
+}
+</script>
+</head>
+<body style="padding: 25px" onload="setFocus()">
+<form name="FibonacciForm" method="post" action="cgi-bin/fibonacci3.cgi" onsubmit="return validateInput();">
+<h3>Please enter the number of Fibonacci numbers to show (1-47):</h3> <input name="max_n" value="20" size="10" maxlength="2" />
+<input type="submit" value="Show me!" />
+</form>
+</body>

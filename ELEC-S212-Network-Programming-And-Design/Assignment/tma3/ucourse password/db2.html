@@ -1,0 +1,65 @@
+<html>
+<head>
+  <title>Lab 2.5 - Flat File Database</title>
+  <script language="JavaScript">
+    function initForm()
+    {
+      var formObj = document.addToDB;
+      formObj.firstname.select();
+      formObj.firstname.focus();
+    }
+    function confirmAdd() {
+      var formObj = document.addToDB;
+      if (formObj.firstname.value == ""){
+        alert("Please enter your first name");
+        formObj.firstname.focus();
+        return false;
+      }
+      if (formObj.lastname.value == ""){
+        alert("Please enter your last name");
+        formObj.lastname.focus();
+        return false;
+      }
+      var confirmString = "Please confirm the following information:\n\n" +
+                          "First Name:\t" + formObj.firstname.value + "\n" +
+                          "Last Name:\t" + formObj.lastname.value + "\n";
+      if (formObj.address.value != '') {
+        confirmString += "Address:\t" + formObj.address.value + "\n";
+      }
+      confirmString += "\nAre you sure you want to add this record?";
+      return window.confirm(confirmString);
+    }
+  </script>
+</head>
+<body style="padding: 15" onload="initForm()">
+
+<form name="addToDB" action="cgi-bin/addToDB.cgi" method="post" onsubmit="return confirmAdd();">
+<table>
+  <tr>
+    <td width="160">First Name:</td>
+    <td><input name="firstname" type="text" size="25" maxlength="20">&nbsp;*</td>
+  </tr>
+  <tr>
+    <td>Last Name:</td>
+    <td><input name="lastname" type="text" size="25" maxlength="20">&nbsp;*</td>
+  </tr>
+  <tr>
+    <td>E-mail Address:</td>
+    <td><input name="address" type="text" size="25" maxlength="50"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <input type="submit" name="Submit" value="Submit">
+      <input type="reset" name="Reset" value="Cancel">
+    </td>
+  </tr>
+</table>
+</form>
+
+<p style="font-size: 12">&gt; 
+  <a href="cgi-bin/viewDB.cgi">View Current Database</a>
+</p>
+
+</body>
+
